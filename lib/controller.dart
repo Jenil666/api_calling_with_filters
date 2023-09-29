@@ -32,6 +32,9 @@ class HomeCOntroller extends GetxController {
     if(check == true)
       {
         displayData.value = true;
+        print("data.value.data![0].productData![0].images![0]");
+        print(data.value.data![0].productData![0].images!.length);
+        print(data.value.data![0].productData![0].images!);
       }
     else
       {

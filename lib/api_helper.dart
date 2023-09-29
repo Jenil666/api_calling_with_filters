@@ -9,7 +9,6 @@ class ApiHelper
 
   Future<TryData> getApi()
   async {
-
     String link = "https://praticle-service.s3.ap-south-1.amazonaws.com/api.json";
     Uri uri = Uri.parse(link);
     var res = await http.get(uri);

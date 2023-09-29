@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:api_calling/api_helper.dart';
 import 'package:api_calling/controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -85,12 +86,19 @@ class HomeScreen extends StatelessWidget {
                   itemCount: controller.data.value.data![0].productData!.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      leading: CachedNetworkImage(imageUrl: "${controller.data.value.data![0].productData![index].userProfile}",errorWidget: (context, url, error) {
+                        return Lottie.asset("assets/animations/no image found.json");
+                      },progressIndicatorBuilder: (context, url, progress) {
+                        return Lottie.asset("assets/animations/loading image.json");
+                      },),
                       title: Text(
                           "${controller.data.value.data![0].productData![index].userName}"),
                       subtitle: Text(
                           "price ${controller.data.value.data![0].productData![index].minPrice}"),
                       trailing: Text(
                           "ratings ${controller.data.value.data![0].productData![index].averageRating}"),
+
+                      // leading: CachedNetworkImage(imageUrl: "${controller.data.value.data![0].productData![index].images![0].}"),
                     );
                   },
                 ),
